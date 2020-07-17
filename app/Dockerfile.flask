@@ -4,7 +4,8 @@ FROM python:$IMAGE_VERSION
 
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
+COPY app/requirements.txt ./
+COPY app/app.py ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 

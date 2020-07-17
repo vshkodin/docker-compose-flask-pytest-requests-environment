@@ -4,7 +4,7 @@ services:
   app-flask:
     build:
       context: .
-      dockerfile: Dockerfile.flask
+      dockerfile: app/Dockerfile.flask
       args:
         - IMAGE_VERSION=3.7.0-alpine3.8
     image: vlad/flask-redis:latest
@@ -23,7 +23,7 @@ services:
   test-framework:
     build:
       context: .
-      dockerfile: Dockerfile.python-pytest
+      dockerfile: tests/Dockerfile.python-pytest
     image: vlad/pytest:latest
     environment:
       - TEST_BASEURL=http://app-flask:5000

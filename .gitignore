@@ -4,3 +4,4 @@ ENV
 temp
 .idea
 __pycache__
+read
