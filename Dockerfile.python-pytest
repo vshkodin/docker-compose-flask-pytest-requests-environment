@@ -1,0 +1,24 @@
+FROM python:3.8.4-alpine3.12
+RUn mkdir test_data
+RUn mkdir test_data/reports
+RUN apk add --update \
+    curl \
+    bash \
+    && rm -rf /var/cache/apk/*;
+
+#RUN python3 -m venv /opt/venv
+RUN pip install virtualenv
+
+COPY tests .
+
+#RUN . /opt/venv/bin/activate && pip install -r requirements.txt
+
+RUN chmod +x api_tests.sh
+
+#RUN /api_tests.sh; exit 0
+
+#RUN . /opt/venv/bin/activate && pytest -vs --alluredir=/allure_results --base_url $TEST_BASEURL test_one.py; exit 0
+
+RUN ls
+
+CMD tail -f /dev/null

@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  app-flask:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+      args:
+        - IMAGE_VERSION=3.7.0-alpine3.8
+    image: vlad/flask-redis:latest
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - 5000:5000
+    networks:
+      - mynet
+
+  redis:
+    image: redis:4.0.11-alpine
+    networks:
+      - mynet
+
+  test-framework:
+    build:
+      context: .
+      dockerfile: Dockerfile.python-pytest
+    image: vlad/pytest:latest
+    environment:
+      - TEST_BASEURL=http://app-flask:5000
+      - FOO=TESTING_STARTS_HERE
+    depends_on:
+      - app-flask
+      - redis
+    networks:
+      - mynet
+    volumes:
+      - $PWD/allure_results/:/test_data/reports
+    command: ["/api_tests.sh"]
+
+networks:
+  mynet:
