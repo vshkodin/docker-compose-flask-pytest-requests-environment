@@ -3,4 +3,4 @@ allure_results
 ENV
 temp
 .idea
-.
+__pycache__
