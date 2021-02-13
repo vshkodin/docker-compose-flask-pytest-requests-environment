@@ -1,8 +1,8 @@
 # Example of Docker, Flask, Pytest API Testing Framework environment.
 ### Clone repo
 ```
-git clone https://github.com/vsshk/docker-flask-pytest-testing-environment.git
-cd docker-flask-pytest-testing-environment
+git clone https://github.com/vsshk/docker-compose-flask-pytest-requests-environment.git
+cd docker-compose-flask-pytest-requests-environment
 ```
 ### Run
 ```
